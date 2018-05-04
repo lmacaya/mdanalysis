@@ -15,7 +15,7 @@ matrix:
       - PYTHON_ARCH: 64
 
 image:
-    - Visual Studio 2017
+    - Visual Studio 2015
 
 environment:
     global:
@@ -48,7 +48,11 @@ init:
         }
 
 install:
-    - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+    # set up a conda env
+    - "git clone --depth 1 git://github.com/astropy/ci-helpers.git"
+    - "powershell ci-helpers/appveyor/install-miniconda.ps1"
+    - "SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%"
+    - "activate test"
     # only using 64 bit at the moment, but use
     # the same setup approach as NumPy / SciPy
     - if [%PYTHON_ARCH%]==[64] SET PATH=%MINGW_64%;%PATH% & SET OPENBLAS=%OPENBLAS_64%
@@ -58,8 +62,8 @@ install:
        python -c "import sys,platform,struct;
        print(sys.platform, platform.machine(), struct.calcsize('P') * 8, )"
 
-    # Upgrade to the latest pip.
-    - 'python -m pip install -U pip setuptools wheel Cython mock six biopython networkx joblib matplotlib scipy griddataformats hypothesis msgpack'
+    # use conda to install dependencies
+    - 'conda install pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest'
 
 build_script:
     - ps: cd package
