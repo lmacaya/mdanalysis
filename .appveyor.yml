@@ -27,11 +27,11 @@ environment:
 
     matrix:
 
-        - PYTHON: C:\Python27-x64
+        - PYTHON: C:\\conda
           PYTHON_VERSION: 2.7
           PYTHON_ARCH: 64
 
-        - PYTHON: C:\Python36-x64
+        - PYTHON: C:\\conda
           PYTHON_VERSION: 3.6
           PYTHON_ARCH: 64
 
@@ -51,8 +51,8 @@ install:
     # set up a conda env
     - "git clone --depth 1 git://github.com/astropy/ci-helpers.git"
     - "powershell ci-helpers/appveyor/install-miniconda.ps1"
-    - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
-    - "activate test"
+    - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+    - ps: activate test
     # only using 64 bit at the moment, but use
     # the same setup approach as NumPy / SciPy
     - if [%PYTHON_ARCH%]==[64] SET PATH=%MINGW_64%;%PATH% & SET OPENBLAS=%OPENBLAS_64%
