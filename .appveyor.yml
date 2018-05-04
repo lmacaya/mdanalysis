@@ -53,19 +53,8 @@ install:
     - "git clone --depth 1 git://github.com/astropy/ci-helpers.git"
     - "powershell ci-helpers/appveyor/install-miniconda.ps1"
     - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
-    - ps: conda create -n testing python=$env:PYTHON_VERSION
+    - ps: conda create -n testing python=$env:PYTHON_VERSION pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest
     - ps: activate testing
-    # only using 64 bit at the moment, but use
-    # the same setup approach as NumPy / SciPy
-    - if [%PYTHON_ARCH%]==[64] SET PATH=%MINGW_64%;%PATH% & SET OPENBLAS=%OPENBLAS_64%
-    - python --version
-    - >-
-       %CMD_IN_ENV%
-       python -c "import sys,platform,struct;
-       print(sys.platform, platform.machine(), struct.calcsize('P') * 8, )"
-
-    # use conda to install dependencies
-    - ps: conda install pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest
 
 build_script:
     - ps: cd package
