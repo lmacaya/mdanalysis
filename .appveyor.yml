@@ -56,7 +56,7 @@ install:
        print(sys.platform, platform.machine(), struct.calcsize('P') * 8, )"
 
     # Upgrade to the latest pip.
-    - 'python -m pip install -U pip setuptools wheel Cython mock six biopython networkx joblib matplotlib scipy griddataformats hypothesis gsd'
+    - 'python -m pip install -U pip setuptools wheel Cython mock six biopython networkx joblib matplotlib scipy griddataformats hypothesis msgpack'
 
 build_script:
     - ps: cd package
