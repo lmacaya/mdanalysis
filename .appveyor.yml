@@ -51,7 +51,7 @@ install:
     # set up a conda env
     - "git clone --depth 1 git://github.com/astropy/ci-helpers.git"
     - "powershell ci-helpers/appveyor/install-miniconda.ps1"
-    - "SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%"
+    - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
     - "activate test"
     # only using 64 bit at the moment, but use
     # the same setup approach as NumPy / SciPy
