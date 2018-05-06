@@ -59,12 +59,12 @@ install:
     # see: https://github.com/swistakm/pyimgui/blob/master/.appveyor.yml
     - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
     - ps: conda config --append channels conda-forge
-    - ps: conda create -n testing python=$env:PYTHON_VERSION pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest mmtf-python GridDataFormats gsd
+    - ps: conda create -n testing python=$env:PYTHON_VERSION pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest mmtf-python GridDataFormats
     - ps: activate testing
 
 build_script:
     - ps: cd package
-    - ps: C:\conda\envs\testing\python.exe setup.py install --user
+    - ps: C:\conda\envs\testing\python.exe setup.py develop --no-deps --user
 
 test_script:
     - ps: cd testsuite
