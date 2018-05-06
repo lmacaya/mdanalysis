@@ -58,7 +58,7 @@ install:
     # deal with missing stdint.h as previously described
     # see: https://github.com/swistakm/pyimgui/blob/master/.appveyor.yml
     - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
-    - ps: conda create -n testing python=$env:PYTHON_VERSION pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest mmtf-python GridDataFormats gsd
+    - ps: conda create -n testing python=$env:PYTHON_VERSION pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest GridDataFormats gsd
     - ps: activate testing
 
 build_script:
