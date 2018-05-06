@@ -64,7 +64,7 @@ install:
 
 build_script:
     - ps: cd package
-    - ps: C:\conda\envs\testing\python.exe setup.py develop --no-deps --user 2> $null
+    - ps: ! (C:\conda\envs\testing\python.exe setup.py develop --no-deps --user 2> $null)
 
 test_script:
     - ps: cd testsuite
