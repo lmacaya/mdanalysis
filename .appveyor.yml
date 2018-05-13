@@ -69,6 +69,8 @@ build_script:
 test_script:
     - ps: cd ..\testsuite
     - ps: cd MDAnalysisTests
+    - ps: ls C:\conda\envs\testing\
+    - ps: ls C:\conda\envs\testing\bin
     - ps: C:\conda\envs\testing\pytest.exe
 
 after_build:
