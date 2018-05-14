@@ -68,6 +68,7 @@ build_script:
 
 test_script:
     - ps: cd ..\testsuite
+    - ps: C:\conda\envs\testing\python.exe -W ignore setup.py develop --no-deps --user
     - ps: cd MDAnalysisTests
     - ps: C:\conda\envs\testing\Scripts\pytest.exe
 
