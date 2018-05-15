@@ -64,13 +64,13 @@ install:
 
 build_script:
     - ps: cd package
-    - ps: C:\conda\envs\testing\python.exe -W ignore setup.py develop --no-deps --user
+    - ps: C:\conda\envs\testing\python.exe 2>&1 setup.py develop --no-deps --user
 
 test_script:
     - ps: cd ..\testsuite
-    - ps: C:\conda\envs\testing\python.exe -W ignore setup.py develop --no-deps --user
+    - ps: C:\conda\envs\testing\python.exe 2>&1 setup.py develop --no-deps --user
     - ps: cd MDAnalysisTests
-    - ps: C:\conda\envs\testing\Scripts\pytest.exe
+    - ps: C:\conda\envs\testing\Scripts\pytest.exe 2>&1
 
 after_build:
     # cache cleanup
