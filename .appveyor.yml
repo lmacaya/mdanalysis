@@ -60,8 +60,8 @@ install:
     - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
     - ps: conda config --append channels conda-forge
     - ps: conda create -n testing python=$env:PYTHON_VERSION pip setuptools wheel cython mock six biopython networkx joblib matplotlib scipy vs2015_runtime pytest mmtf-python GridDataFormats
-    - ps: pip install gsd==1.5.2
     - cmd: C:\conda\envs\testing\Scripts\activate testing
+    - cmd: C:\conda\envs\testing\Scripts\pip.exe install gsd==1.5.2
 
 build_script:
     - cmd: cd package
